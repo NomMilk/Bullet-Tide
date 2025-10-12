@@ -14,7 +14,7 @@ start:
     call check_cpuid
     call check_long_mode
 
-    call setup_page_table
+    call setup_page_tables
     call enable_paging
 
     lgdt [gdt64.pointer]
@@ -67,7 +67,7 @@ check_long_mode:
     mov al, "L"
     jmp error
 
-setup_page_table:
+setup_page_tables:
     mov eax, page_table_l3
     or eax, 0b11
     mov [page_table_l4], eax
@@ -75,6 +75,8 @@ setup_page_table:
     mov eax, page_table_l2
     or eax, 0b11
     mov [page_table_l3], eax
+
+    mov ecx, 0
 
 .loop:
     mov eax, 0x200000
