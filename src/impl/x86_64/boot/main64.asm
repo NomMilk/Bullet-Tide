@@ -11,6 +11,5 @@ long_mode_start:
     mov fs, ax
     mov gs, ax
 
-    ; print 'ff'
     call kernel_main
     hlt
