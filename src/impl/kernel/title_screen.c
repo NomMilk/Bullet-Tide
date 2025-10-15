@@ -22,6 +22,7 @@ void kernel_main()
     {
         if(detect_char() != '\0')
         {
+            print_set_color(PRINT_COLOR_CYAN, PRINT_COLOR_BLUE);
             print_clear();
             break;
         }
