@@ -1,8 +1,5 @@
 #include "print.h"
 
-const static size_t NUM_COLS = 80;
-const static size_t NUM_ROWS = 25;
-
 struct Char
 {
     uint8_t character;
@@ -28,7 +25,7 @@ void clear_row(size_t row)
     }
 }
 
-void print_clear()
+void print_clear(void)
 {
     for (size_t i = 0; i < NUM_ROWS; ++i)
     {
@@ -36,7 +33,7 @@ void print_clear()
     }
 }
 
-void print_newline()
+void print_newline(void)
 {
     col = 0;
     if (row < NUM_ROWS - 1)
@@ -79,8 +76,19 @@ void print_char(char character)
     ++col;
 }
 
+void print_char_specific(char character, size_t _col, size_t _row)
+{
+    buffer[_col + NUM_COLS * _row] = (struct Char)
+    {
+        character: (uint8_t) character,
+        color: color,
+    };
+}
+
 void print_str(char* str)
 {
+    col = 0;
+    row = 0;
     for(size_t i = 0; 1; ++i)
     {
         char character = (uint8_t) str[i];

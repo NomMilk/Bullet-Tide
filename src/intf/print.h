@@ -3,6 +3,9 @@
 #include <stdint.h>
 #include <stddef.h>
 
+const static size_t NUM_COLS = 80;
+const static size_t NUM_ROWS = 25;
+
 enum 
 {
     PRINT_COLOR_BLACK = 0,
@@ -23,7 +26,8 @@ enum
     PRINT_COLOR_WHITE = 15,
 };
 
-void print_clear();
+void print_clear(void);
 void print_char(char character);
+void print_char_specific(char character, size_t _col, size_t _row);
 void print_str(char* string);
 void print_set_color(uint8_t foreground, uint8_t background);
