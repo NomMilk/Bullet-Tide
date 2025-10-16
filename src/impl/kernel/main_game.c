@@ -43,8 +43,9 @@ void kernel_main(void)
     //game loop
     while(true)
     {
-        move_hori(detect_char());
-        move_vert(detect_char());
+        char current_char = detect_char();
+        move_hori(current_char);
+        move_vert(current_char);
         partial_redraw();
         delay(UPDATE_DELAY);
     }

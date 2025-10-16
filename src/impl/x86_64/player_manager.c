@@ -4,17 +4,19 @@
 #include "print.h"
 
 int prev_x = 0, prev_y = 0;
-float pos_x = 0.0f, pos_y = 0.0f;
+int pos_x = 0, pos_y = 0;
+
+int result_x, result_y;
 
 void move_hori(char _input)
 {
     if(_input == 'a')
     {
-        pos_x -= 0.0001f;
+        pos_x -= 2;
     }
     if(_input == 'd')
     {
-        pos_x += 0.0001f;
+        pos_x += 2;
     }
 }
 
@@ -22,26 +24,24 @@ void move_vert(char _input)
 {
     if(_input == 'w')
     {
-        pos_y -= 0.0001f;
+        pos_y -= 1;
     }
 
     if(_input == 's')
     {
-        pos_y += 0.0001f;
+        pos_y += 1;
     }
 }
 
 void partial_redraw(void)
 {
-    int result_x = (int)pos_x;
-    int result_y= (int)pos_y;
+    if(pos_y < 0) pos_y = NUM_ROWS;
+    if(pos_y > NUM_ROWS) pos_y = 0;
 
-    print_char_specific('X', result_x, result_y);
-
-    if(result_x != prev_x || result_y != prev_y)
+    if(pos_x != prev_x || pos_y != prev_y)
         print_char_specific(' ', prev_x, prev_y);
+    print_char_specific('X', pos_x, pos_y);
 
-    prev_x = (int)pos_x;
-    prev_y = (int)pos_y;
-
+    prev_x = pos_x;
+    prev_y = pos_y;
 }
