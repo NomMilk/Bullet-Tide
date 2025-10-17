@@ -1,5 +1,10 @@
 #pragma once
 
+#include <stdint.h>
+#include <stddef.h>
+
+const static size_t UPDATE_DELAY = 500;
+
 void delay(unsigned int count)
 {
     for (unsigned int i = 0; i < count; ++i)

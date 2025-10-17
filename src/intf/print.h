@@ -29,5 +29,6 @@ enum
 void print_clear(void);
 void print_char(char character);
 void print_char_specific(char character, size_t _col, size_t _row);
+void print_char_specific_color(char character, size_t _col, size_t _row, uint8_t foreground, uint8_t background);
 void print_str(char* string);
 void print_set_color(uint8_t foreground, uint8_t background);

@@ -1,11 +1,14 @@
 #include <stdbool.h>
 
+//nessary
 #include "print.h"
-#include "input_manager.h"
-#include "player_manager.h"
 #include "utils.h"
+#include "input_manager.h"
 
-const static size_t UPDATE_DELAY = 500;
+//game
+#include "player_manager.h"
+#include "enemies.h"
+#include "score.h"
 
 //game states
 void game_over(void);
@@ -33,21 +36,32 @@ void kernel_main(void)
     {
         if(detect_char() != '\0')
         {
-            print_set_color(PRINT_COLOR_CYAN, PRINT_COLOR_BLUE);
+            print_set_color(PRINT_COLOR_WHITE, PRINT_COLOR_BLUE);
             print_clear();
             break;
         }
         delay(UPDATE_DELAY);
     }
 
+    //init
+    pos_x = (int)(NUM_COLS/2);
+    pos_y = (int)(NUM_ROWS/2);
+
     //game loop
     while(true)
     {
-        char current_char = detect_char();
-        move_hori(current_char);
-        move_vert(current_char);
-        partial_redraw();
-        delay(UPDATE_DELAY);
+        for(size_t i = 0; i < (int)(UPDATE_DELAY / 2); ++i)
+        {
+            char current_char = detect_char();
+            move_hori(current_char);
+            move_vert(current_char);
+            partial_redraw();
+            delay(UPDATE_DELAY);
+            print_char_specific_color('V', 10, 10, PRINT_COLOR_LIGHT_RED, PRINT_COLOR_BLUE);
+            display_score();
+        }
+
+        update_score();
     }
 }
 

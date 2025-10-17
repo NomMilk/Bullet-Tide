@@ -85,6 +85,15 @@ void print_char_specific(char character, size_t _col, size_t _row)
     };
 }
 
+void print_char_specific_color(char character, size_t _col, size_t _row, uint8_t foreground, uint8_t background)
+{
+    buffer[_col + NUM_COLS * _row] = (struct Char)
+    {
+        character: (uint8_t) character,
+        color: foreground + (background << 4),
+    };
+}
+
 void print_str(char* str)
 {
     col = 0;
