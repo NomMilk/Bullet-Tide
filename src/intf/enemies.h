@@ -12,6 +12,7 @@ struct enemy_data
 };
 
 extern struct enemy_data enemies[10];
+extern size_t enemy_amount;
 
 void create_enemy(void);
 void enemy_collided(void);

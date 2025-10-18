@@ -44,6 +44,7 @@ void kernel_main(void)
     }
 
     //init
+    create_enemy();
     pos_x = (int)(NUM_COLS/2);
     pos_y = (int)(NUM_ROWS/2);
 
@@ -57,8 +58,9 @@ void kernel_main(void)
             move_vert(current_char);
             partial_redraw();
             delay(UPDATE_DELAY);
-            print_char_specific_color('V', 10, 10, PRINT_COLOR_LIGHT_RED, PRINT_COLOR_BLUE);
             display_score();
+
+            enemy_movement();
         }
 
         update_score();
