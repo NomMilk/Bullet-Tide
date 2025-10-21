@@ -3,6 +3,7 @@
 //nessary
 #include "print.h"
 #include "utils.h"
+#include "sound_manager.h"
 #include "input_manager.h"
 
 //game
@@ -83,6 +84,7 @@ void start_game(void)
 
 void game_over(void)
 {
+    beep(500);
     print_set_color(PRINT_COLOR_YELLOW, PRINT_COLOR_BLACK);
     print_clear();
     print_str(

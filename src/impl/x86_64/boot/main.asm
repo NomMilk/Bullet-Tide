@@ -3,7 +3,7 @@ extern long_mode_start
 
 ; weird ahh starting guide
 ; this is for testing purposes
-;"C:\Program Files\qemu\qemu-system-x86_64.exe" -cdrom dist/x86_64/kernel.iso
+; "C:\Program Files\qemu\qemu-system-x86_64.exe" -audiodev dsound,id=speaker -machine pcspk-audiodev=speaker -cdrom dist/x86_64/kernel.iso
 ; docker run --rm -it -v "%cd%":/root/env fishos-buildenv
 section .text
 bits 32

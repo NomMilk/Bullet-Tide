@@ -9,6 +9,5 @@ static const char scancode_table[128] = {
     'z','x','c','v','b','n','m',',','.','/', 0, '*', 0, ' '
 };
 
-static inline uint8_t inb(uint16_t port);
 uint8_t read_scancode(void);
 char detect_char(void);

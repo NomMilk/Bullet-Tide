@@ -3,6 +3,7 @@
 #include "print.h"
 #include "enemies.h"
 #include "player_manager.h"
+#include "sound_manager.h"
 #include "score.h"
 
 struct enemy_data enemies[10] = {0};
@@ -17,6 +18,7 @@ static inline size_t rdtsc(void)
 
 void clear_enemy()
 {
+    beep(250);
     enemy_amount = 0;
 
     print_set_color(PRINT_COLOR_WHITE, PRINT_COLOR_BLUE + (score % 8));
@@ -26,6 +28,7 @@ void clear_enemy()
 void create_enemy(void)
 {
     if(enemy_amount >= 9) clear_enemy();
+    else beep(200);
     size_t t = rdtsc();
 
     enemies[enemy_amount++] = (struct enemy_data){ 

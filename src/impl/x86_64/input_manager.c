@@ -1,14 +1,9 @@
 #include "input_manager.h"
+#include "utils.h"
 #include <stdint.h>
 
 //god bless that one guy at ibm who decided to make a port just for the keyboard
 #define PS2_DATA    0x60
-
-static inline uint8_t inb(uint16_t port) {
-    uint8_t value;
-    __asm__ volatile ("inb %1, %0" : "=a"(value) : "Nd"(port));
-    return value;
-}
 
 uint8_t read_scancode(void) {
     return inb(PS2_DATA);
