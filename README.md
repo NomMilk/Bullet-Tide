@@ -12,7 +12,7 @@ hardware!!!
 
 - infinite levels
 - randomly spawning enemies
-- still no sound
+- there is sound effects
 - maybe a memory leak?
   
 <h2>Compilation</h2>
